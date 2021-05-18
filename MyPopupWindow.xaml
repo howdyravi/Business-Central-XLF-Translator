@@ -1,0 +1,11 @@
+﻿<Window x:Class="XliffTranslatorTool.MyPopupWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Language Selector" SizeToContent="Height" Width="350"
+        ResizeMode="NoResize">
+    <StackPanel>
+        <TextBlock Margin="5px" FontSize="18">Enter language code : </TextBlock>
+        <TextBox x:Name="LangCodeTextBox" Margin="5px" FontSize="18"/>
+        <Button Content="Save" Click="OnSave" Margin="5px,0,5px,5px" Width="100px" HorizontalAlignment="Right"/>
+    </StackPanel>
+</Window>

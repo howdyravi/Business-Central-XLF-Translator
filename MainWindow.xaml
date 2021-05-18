@@ -1,0 +1,75 @@
+﻿<Window x:Class="XliffTranslatorTool.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Business Central XLF Translator" Height="350" Width="525"
+        MinHeight="350" MinWidth="525"
+        Loaded="Window_Loaded"
+        
+        Closing="Window_Closing">
+    
+    <DockPanel>
+        <Grid DockPanel.Dock="Top">
+            <Menu x:Name="FileMenuItem" Height="25">
+                <Menu.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <DockPanel HorizontalAlignment="Left"></DockPanel>
+                    </ItemsPanelTemplate>
+                </Menu.ItemsPanel>
+
+                <MenuItem Header="_File">
+                    <MenuItem x:Name="OpenFileMenuOption" Header="_Open file..." Click="OpenFileMenuOption_Click"/>
+                    <Separator/>
+                    <MenuItem x:Name="SaveMenuOption" Header="_Save" Click="SaveMenuOption_Click"/>
+                    <MenuItem x:Name="SaveAsMenuOption" Header="Save _as..." Click="SaveAsMenuOption_Click"/>
+                </MenuItem>
+
+                <MenuItem Header="_Translate">
+                    <MenuItem x:Name="ImportFileMenuOption" Header="_Import/Merge with file...">
+                        <MenuItem x:Name="Microsoft" Header="_Microsoft" Click="ImportFileMenuOption_Click"/>
+                        <MenuItem x:Name="Other" Header="_Other" Click="ImportFileMenuOption_Click"/>
+                    </MenuItem>
+                    <MenuItem x:Name="TranslateMenuOption" Header="_Translate with Helper file" Click="TranslateMenuOption_Click"/>
+                    <Separator/>
+                    <MenuItem x:Name="TranslateEnglishOption" Header="_Translate to English (en-US)" Click="TranslateToEnglish_Click"/>
+                    <Separator/>
+                    <MenuItem x:Name="ExportUntranslated" Header="_Export untranslated" Click="ExportMenuOption_Click"/>
+                </MenuItem>
+
+            </Menu>
+            <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal" Name="_progressPanel" Visibility="Hidden">
+                <TextBlock Text="0%" VerticalAlignment="Center" Name="_progressPercentage" FontWeight="SemiBold"/>
+                <ProgressBar Height="18" Width="300" Margin="5" Name="_progressBar"/>
+            </StackPanel>
+        </Grid>
+        <DataGrid x:Name="MainDataGrid" VerticalAlignment="Top" FrozenColumnCount="1" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Identifier}" Header="Identifier" MinWidth="100" FontWeight="SemiBold"/>
+                <DataGridTextColumn Binding="{Binding Meaning}" Header="Meaning" MinWidth="100"/>
+                <DataGridTextColumn Binding="{Binding Description}" Header="Description" MinWidth="100" FontWeight="SemiBold" Foreground="Red" FontStyle="Italic">
+                    <DataGridTextColumn.EditingElementStyle>
+                        <Style TargetType="TextBox">
+                            <Setter Property="AcceptsReturn" Value="true" />
+                        </Style>
+                    </DataGridTextColumn.EditingElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Source}" Header="Source" MinWidth="100">
+                    <DataGridTextColumn.EditingElementStyle>
+                        <Style TargetType="TextBox">
+                            <Setter Property="AcceptsReturn" Value="true" />
+                        </Style>
+                    </DataGridTextColumn.EditingElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Target}" Header="Target" Width="*">
+                    <DataGridTextColumn.EditingElementStyle>
+                        <Style TargetType="TextBox">
+                            <Setter Property="AcceptsReturn" Value="true" />
+                        </Style>
+                    </DataGridTextColumn.EditingElementStyle>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </DockPanel>
+</Window>
