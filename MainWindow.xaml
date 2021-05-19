@@ -33,9 +33,9 @@
                     </MenuItem>
                     <MenuItem x:Name="TranslateMenuOption" Header="_Translate with Helper file" Click="TranslateMenuOption_Click"/>
                     <Separator/>
-                    <MenuItem x:Name="TranslateEnglishOption" Header="_Translate to English (en-US)" Click="TranslateToEnglish_Click"/>
+                    <MenuItem x:Name="TranslateEnglishOption" Header="Translate to _English (en-US)" Click="TranslateToEnglish_Click"/>
                     <Separator/>
-                    <MenuItem x:Name="ExportUntranslated" Header="_Export untranslated" Click="ExportMenuOption_Click"/>
+                    <MenuItem x:Name="ExportUntranslated" Header="Export _Untranslated" Click="ExportMenuOption_Click"/>
                 </MenuItem>
 
             </Menu>
